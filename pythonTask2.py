@@ -6,6 +6,19 @@ import string
 user_details_list = []
 
 
+# a function that prints out the collected details
+def print_collected_details(collected_details):
+    for the_values in collected_details:
+
+        print(f"--------------------------------------")
+        print(f"FIRST NAME: {str(the_values['first_name']).upper()}")
+        print(f"LAST NAME:  {str(the_values['last_name']).upper()}")
+        print(f"EMAIL:      {str(the_values['email']).lower()}")
+        print(f"PASSWORD:   {the_values['password']}")
+
+    return
+
+
 # a function that generates a random password for the user
 def generate_random_password(first_name, last_name, string_length):
     # getting the first two and last two letters of user's first name and last name
@@ -100,18 +113,19 @@ while True:
         output1 = verify_password_satisfaction_yes(password_satisfaction, user_password)
         # saving user details into list container
         user_details_list.append(output1)
-
+        # Determining if to add another user
         command = input('To quit type QUIT, To continue type CONTINUE: ').lower()
         if command == 'quit':
-            print(user_details_list)
-            print('You have Quit the program')
+            print("\n******* COLLECTED USER DETAILS *******")
+            print_collected_details(user_details_list)
+            print('--------------------------------------\n     You have Quit the program')
             break
         elif command == 'continue':
             continue
         else:
             command = input('WRONG INPUT!!!\nTo quit type QUIT, To continue type CONTINUE: ').lower()
             if command == 'quit':
-                print(user_details_list)
+                print_collected_details(user_details_list)
                 print('You have Quit the program')
                 break
             elif command == 'continue':
@@ -121,9 +135,10 @@ while True:
         output2 = verify_password_satisfaction_no(password_satisfaction)
         # saving user details into list container
         user_details_list.append(output2)
+        # Determining if to add another user
         command = input('To quit type QUIT, To continue type CONTINUE: ').lower()
         if command == 'quit':
-            print(user_details_list)
+            print_collected_details(user_details_list)
             print('You have Quit the program')
             break
         elif command == 'continue':
@@ -131,11 +146,8 @@ while True:
         else:
             command = input('WRONG INPUT!!!\nTo quit type QUIT, To continue type CONTINUE: ').lower()
             if command == 'quit':
-                print(user_details_list)
+                print_collected_details(user_details_list)
                 print('You have Quit the program')
                 break
             elif command == 'continue':
                 continue
-
-
-
